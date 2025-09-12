@@ -262,7 +262,7 @@ export async function pullSite({ appId, dir, port, live = false, yes = false, ar
     await fs.writeFile(wpConfigPath, wpConfig);
   }
 
-  const configLocal = `<?php\n// Local overrides\ndefine('WP_HOME', 'http://localhost:${port || 8080}');\ndefine('WP_SITEURL', 'http://localhost:${port || 8080}');\ndefine('WP_DEBUG', true);\n`;
+  const configLocal = `<?php\n// Local overrides\ndefine('WP_HOME', 'http://localhost:${port || 8080}');\ndefine('WP_SITEURL', 'http://localhost:${port || 8080}');\n// Disable persistent object cache locally (no Redis service by default)\ndefine('WP_CACHE', false);\n// Compatible with Redis Object Cache / Object Cache Pro plugins\nif (!defined('WP_REDIS_DISABLED')) define('WP_REDIS_DISABLED', true);\ndefine('WP_DEBUG', true);\n`;
   await fs.writeFile(path.join(wpDir, 'wp-config-local.php'), configLocal);
 
   // Install local one-click login mu-plugin

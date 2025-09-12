@@ -193,6 +193,7 @@ cwl pull --app 123456 --archive
 
 ```zsh
 cwl up my-site           # Start containers (resolves to ./my-site)
+cwl up my-site --port 8090  # Change the local port and restart
 cwl status my-site       # Show URL and docker compose ps
 cwl down my-site         # Stop containers
 # Explicit paths still work
@@ -316,6 +317,21 @@ cwl info --app 123456  # details + credentials payloads (redacted upstream)
 - If rsync asks for a password and fails, install `sshpass` (or copy your SSH key to the app user).
 - Start Docker Desktop before running `cwl up` or `cwl quick`.
 - Re-auth with `cwl auth --clear` then `cwl auth`.
+
+### Redis object cache drop-in locally
+
+If your pulled site includes a persistent object cache drop-in (e.g., `wp/wp-content/object-cache.php` from Redis Object Cache or Object Cache Pro), WordPress may attempt to connect to a Redis server that isn’t present in the local Docker stack.
+
+What we do by default:
+- The CLI writes `wp/wp-config-local.php` with:
+	- `define('WP_CACHE', false);`
+	- `define('WP_REDIS_DISABLED', true);`
+These ensure the drop-in stays inactive locally.
+
+If you still see a Redis connection error:
+1) Confirm the defines exist in `wp/wp-config-local.php`.
+2) Stop and restart containers: `cwl down my-site && cwl up my-site`.
+3) Optionally delete/rename the drop-in: `mv wp/wp-content/object-cache.php wp/wp-content/object-cache.php.bak`.
 
 ### Live pull vs. clone
 
