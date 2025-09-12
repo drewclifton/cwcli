@@ -9,9 +9,9 @@ Goal: Default sites root should be the current working directory (CWD), not `./s
 - [x] Update command option/help text mentioning `./sites`
 - [x] Update smoketest description to reflect CWD
 - [x] Update README references to default `./sites` → CWD
-- [ ] Quick local verification via `sites` command in a new directory
+- [x] Quick local verification via `sites` command in a new directory
 - [ ] Optional: try `smoketest --cleanup` if Docker available
-- [ ] Commit and push changes
+- [x] Commit and push changes
 
 ## Notes
 - Ensure all commands derive paths via `getSitesRoot()` or `resolveSiteDir()`; remove hard-coded `./sites` wording.
