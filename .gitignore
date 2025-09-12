@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Local environment
+.env
+.env.*
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local sites (do not commit large WordPress assets)
+sites/
+node_modules/
+sites/
+.cw/
+.env
+.DS_Store
+dist/
+coverage/
+*.lognode_modules
+.cw/
+**/.DS_Store
+**/.env
+**/db.sql
+**/db.sql.gz

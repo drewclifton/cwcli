@@ -1,0 +1,59 @@
+{
+  "name": "cwcli",
+  "version": "0.1.0",
+  "description": "Work on your Cloudways WordPress sites locally with one command.",
+  "type": "module",
+  "bin": {
+    "cwl": "./src/index.js",
+    "cwcli": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cloudways",
+    "wordpress",
+    "docker",
+    "cli",
+    "local"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drewclifton/cwcli.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "node ./src/selftest.js",
+    "cwl": "node ./src/index.js",
+    "setup": "node ./scripts/setup.js"
+  },
+  "dependencies": {
+    "@oclif/core": "3.26.6",
+    "chalk": "5.3.0",
+    "commander": "12.1.0",
+    "conf": "13.0.1",
+    "execa": "8.0.1",
+    "fs-extra": "11.2.0",
+    "inquirer": "9.3.7",
+    "ky": "1.4.0",
+    "keytar": "7.9.0",
+    "ssh2": "1.15.0",
+    "ssh2-sftp-client": "9.1.0",
+    "dotenv": "16.4.5",
+    "ora": "8.1.0",
+    "open": "10.1.0",
+    "semver": "7.6.3",
+    "tar": "7.4.3",
+    "yaml": "2.5.1"
+  }
+}
