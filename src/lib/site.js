@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 export function getSitesRoot() {
-  const root = process.env.CWL_SITES_ROOT || path.join(process.cwd(), 'sites');
+  const root = process.env.CWL_SITES_ROOT || process.cwd();
   return path.resolve(root);
 }
 
@@ -63,12 +63,12 @@ export function resolveSiteDir(siteOrDir, opts, cmd) {
   const cwd = process.cwd();
   if (isSiteDir(cwd)) return cwd;
 
-  throw new Error('No site specified. Provide a site name (under ./sites), a path, or run the command from within a site directory.');
+  throw new Error('No site specified. Provide a site name (under the current directory), a path, or run the command from within a site directory.');
 }
 
 export function withSiteArg(command, handler) {
   command
-    .argument('[siteOrDir]', 'site name (under ./sites) or a path')
+    .argument('[siteOrDir]', 'site name (under the current directory) or a path')
     .option('-d, --dir <path>', 'explicit site directory (deprecated)');
 
   command.action(async (siteOrDir, opts, cmd) => {

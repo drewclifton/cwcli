@@ -8,7 +8,7 @@ import { getSitesRoot, isSiteDir } from '../site.js';
 export function rmAllCommand() {
   const cmd = new Command('rm-all');
   cmd
-    .description('Remove all local site directories under the sites root (stops Docker first)')
+    .description('Remove all local site directories under the current directory (or CWL_SITES_ROOT); stops Docker first')
     .option('--yes', 'Skip confirmation prompt')
     .action(async (opts) => {
       const root = getSitesRoot();

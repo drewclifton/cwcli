@@ -37,7 +37,7 @@ export function quickCommand() {
         appId = ans.app;
       }
 
-      // Determine default dir under ./sites/<slug> in current repo if not provided
+  // Determine default dir under <cwd>/<slug> if not provided
       let dir = opts.dir;
       if (!dir) {
         const picked = filtered.find(x => String(x.app.id) === String(appId));

@@ -11,7 +11,7 @@ export function initCommand() {
   cmd
     .description('One-step: pick app → pull → start Docker → import DB → open browser')
     .option('-a, --app <appId>', 'Cloudways application ID')
-    .option('-d, --dir <dir>', 'Local directory for the site (default: ./sites/<slug>)')
+  .option('-d, --dir <dir>', 'Local directory for the site (default: <cwd>/<slug>)')
     .option('--port <port>', 'Local HTTP port', v => parseInt(v, 10), 8080)
   .option('--from-live', 'Pull directly from the live app (read-only)')
   .option('--yes', 'Assume yes for prompts')

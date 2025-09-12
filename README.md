@@ -27,7 +27,7 @@ npx -y cwcli --help
 
 Notes:
 - The command is `cwl` (primary). An alias `cwcli` is also available.
-- Default sites root is `./sites` under your current directory. Override with `CWL_SITES_ROOT`.
+- Default sites root is your current working directory. Override with `CWL_SITES_ROOT`.
 
 ## Authentication
 
@@ -67,7 +67,7 @@ cwl auth
 cwl quick
 ```
 
-The first run asks you to pick the Cloudways app. It creates the site under `./sites/<slug>` and opens http://localhost:8080 (or the port shown in the site’s `.env`).
+The first run asks you to pick the Cloudways app. It creates the site under your current directory as `./<slug>` and opens http://localhost:8080 (or the port shown in the site’s `.env`).
 
 Tip: need speed? Pull live (read-only) to skip server-side cloning:
 
@@ -87,7 +87,7 @@ cwl auth
 # 2) List apps (find an APP_ID; try --sort name or --server <ID>)
 cwl apps
 
-# 3) Pull a site (creates ./sites/<slug>; omit --app to pick interactively)
+# 3) Pull a site (creates ./<slug> in your current directory; omit --app to pick interactively)
 cwl pull --app <APP_ID>
 # Faster read-only from live (skips clone; exports live DB safely):
 # cwl pull --app <PROD_APP_ID> --live
@@ -114,17 +114,17 @@ cwl open <site-name-or-path>
 
 ### Site Folder Layout
 
-After pulling or running quick/init, each site lives under `./sites/<slug>` and contains:
+After pulling or running quick/init, each site lives under your current directory as `./<slug>` and contains:
 
 - `wp/`: WordPress files (`public_html` from Cloudways).
 - `.cw/`: CLI artifacts like `db.sql[.gz]`, `nginx.conf`, `meta.json`, temp files.
 - `docker-compose.yml`: Nginx + PHP-FPM + MariaDB + WP-CLI setup.
 - `.env`: Values like `WP_PORT`, `SITE_SLUG`, `DB_NAME`.
 
-You can run all `cwl` commands from anywhere using a positional site argument. If you pass a bare name, it resolves to `./sites/<name>`. You can also pass an explicit path. The legacy `--dir` still works but is deprecated.
+You can run all `cwl` commands from anywhere using a positional site argument. If you pass a bare name, it resolves to `./<name>` under your current directory (or under `CWL_SITES_ROOT` if set). You can also pass an explicit path. The legacy `--dir` still works but is deprecated.
 
 Sites root:
-- Default is `./sites` relative to your current working directory.
+- Default is your current working directory.
 - Override with `CWL_SITES_ROOT`:
 
 ```sh
@@ -176,11 +176,11 @@ cwl apps --server 12345        # Filter to a specific server
 Pull files + DB for an app and scaffold Docker locally.
 
 ```zsh
-# Prompt to pick an app, create ./sites/<slug>
+# Prompt to pick an app, create ./<slug>
 cwl pull
 
 # Explicit app and directory with custom port
-cwl pull --app 123456 --dir ./sites/my-site --port 8082
+cwl pull --app 123456 --dir ./my-site --port 8082
 
 # Pull directly from live (read-only; exports live DB)
 cwl pull --app 123456 --live --yes
@@ -192,13 +192,13 @@ cwl pull --app 123456 --archive
 ### `cwl up` / `cwl down` / `cwl status`
 
 ```zsh
-cwl up my-site           # Start containers (resolves to ./sites/my-site)
+cwl up my-site           # Start containers (resolves to ./my-site)
 cwl status my-site       # Show URL and docker compose ps
 cwl down my-site         # Stop containers
 # Explicit paths still work
-cwl up ./sites/my-site
-cwl status ./sites/my-site
-cwl down ./sites/my-site
+cwl up ./my-site
+cwl status ./my-site
+cwl down ./my-site
 ```
 
 ### `cwl sites`

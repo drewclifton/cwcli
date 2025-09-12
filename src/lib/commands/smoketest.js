@@ -20,7 +20,7 @@ async function waitForDb(siteDir, seconds = 60) {
 export function smoketestCommand() {
   const cmd = new Command('smoketest');
   cmd
-    .description('Create a disposable local WP site under sites/, boot it, and validate basic flows')
+  .description('Create a disposable local WP site under the current directory, boot it, and validate basic flows')
     .option('--port <port>', 'Local HTTP port', v => parseInt(v, 10), 8095)
     .option('--slug <name>', 'Site name/slug (default: cwl-smoke-<timestamp>)')
     .option('--cleanup', 'Tear down containers and remove the site folder after the test')

@@ -5,7 +5,7 @@ import { getSitesRoot, isSiteDir } from '../site.js';
 
 export function sitesCommand() {
   const cmd = new Command('sites');
-  cmd.description('List local sites under the default sites root').action(async () => {
+  cmd.description('List local sites under the current directory (or CWL_SITES_ROOT)').action(async () => {
     const root = getSitesRoot();
     try {
       const names = await fs.readdir(root);
