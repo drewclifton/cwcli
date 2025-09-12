@@ -1,6 +1,6 @@
 {
   "name": "cwcli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Work on your Cloudways WordPress sites locally with one command.",
   "type": "module",
   "bin": {
