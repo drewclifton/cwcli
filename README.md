@@ -333,8 +333,8 @@ cwl info --app 123456  # details + credentials payloads (redacted upstream)
 ## From Source (Contributors)
 
 ```zsh
-git clone https://github.com/your-org/cloudways-wp-local-cli.git
-cd cloudways-wp-local-cli
+git clone https://github.com/drewclifton/cwcli.git
+cd cwcli
 npm install
 # One-time local link (adds `cwl` command pointing to this repo)
 npm run setup
