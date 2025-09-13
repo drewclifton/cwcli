@@ -354,13 +354,14 @@ npm run start -- --help
 Two options: GitHub Releases (CI) or manual CLI.
 
 1) GitHub Releases (CI)
-- Add a repo secret `NPM_TOKEN` with publish rights.
+- Scoped package: this package is published as `@ddcn/cwcli`. Ensure `NPM_TOKEN` is an npm Automation token from the owner of the `@ddcn` scope.
+- Add a repo secret `NPM_TOKEN` (Settings → Secrets and variables → Actions).
 - Bump version and push tag:
 	```zsh
 	npm version patch -m "Release %s"
 	git push origin HEAD --follow-tags
 	```
-- Create a GitHub Release for the new tag. The workflow publishes to npm.
+- Create a GitHub Release for the new tag. The workflow will run `npm whoami` and then `npm publish --access public --no-provenance`.
 
 2) Manual CLI
 ```zsh
