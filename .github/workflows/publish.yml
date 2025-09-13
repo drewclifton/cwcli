@@ -32,4 +32,6 @@ jobs:
         run: npm test
 
       - name: Publish
+        env:
+          NPM_CONFIG_PROVENANCE: false
         run: npm publish --access public
