@@ -4,12 +4,13 @@
   "description": "Work on your Cloudways WordPress sites locally with one command.",
   "type": "module",
   "bin": {
-    "cwl": "./src/index.js",
-    "cwcli": "./src/index.js"
+    "cwl": "src/index.js",
+    "cwcli": "src/index.js"
   },
   "engines": {
     "node": ">=18"
   },
+  "preferGlobal": true,
   "keywords": [
     "cloudways",
     "wordpress",
@@ -20,7 +21,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/drewclifton/cwcli.git"
+    "url": "git+https://github.com/drewclifton/cwcli.git"
+  },
+  "homepage": "https://github.com/drewclifton/cwcli#readme",
+  "bugs": {
+    "url": "https://github.com/drewclifton/cwcli/issues"
   },
   "publishConfig": {
     "access": "public"
