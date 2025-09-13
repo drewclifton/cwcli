@@ -21,6 +21,8 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@ddcn'
+          always-auth: true
 
       - name: Install system deps (for native modules)
         run: sudo apt-get update && sudo apt-get install -y build-essential python3 g++ make libsecret-1-dev
@@ -31,5 +33,13 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Auth check
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm whoami
+
       - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --no-provenance
