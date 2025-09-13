@@ -1,5 +1,5 @@
 {
-  "name": "cwcli",
+  "name": "@ddcn/cwcli",
   "version": "0.1.1",
   "description": "Work on your Cloudways WordPress sites locally with one command.",
   "type": "module",
@@ -27,15 +27,13 @@
   },
   "files": [
     "src/",
-    "scripts/",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "start": "node ./src/index.js",
     "test": "node ./src/selftest.js",
-    "cwl": "node ./src/index.js",
-    "setup": "node ./scripts/setup.js"
+    "cwl": "node ./src/index.js"
   },
   "dependencies": {
     "@oclif/core": "3.26.6",

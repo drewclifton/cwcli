@@ -12,17 +12,11 @@ Work on your Cloudways WordPress sites locally with one command.
 ## Quick Install (npm)
 
 ```zsh
-# Global install
-npm install -g cwcli
+# Global install (scoped)
+npm install -g @ddcn/cwcli
 
 # Verify
 cwl --help
-```
-
-Alternatively with npx (no global install):
-
-```zsh
-npx -y cwcli --help
 ```
 
 Notes:
@@ -352,14 +346,7 @@ If you still see a Redis connection error:
 git clone https://github.com/drewclifton/cwcli.git
 cd cwcli
 npm install
-# One-time local link (adds `cwl` command pointing to this repo)
-npm run setup
-```
-
-Verify:
-
-```zsh
-cwl --help
+npm run start -- --help
 ```
 
 ## Publishing (Maintainers)
