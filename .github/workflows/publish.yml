@@ -31,14 +31,5 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Verify NPM_TOKEN is present
-        run: |
-          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
-            echo "NPM_TOKEN secret is not set. Add it in GitHub > Settings > Secrets and variables > Actions." >&2
-            exit 1
-          fi
-
       - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --provenance
